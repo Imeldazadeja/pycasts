@@ -20,4 +20,4 @@ class PodCastsTests(TestCase):
         self.assertEqual(self.episode.guid, "de194720-7b4c-49e2-a05f-432436d3fetr"),
 
     def test_episode_str_representation(self):
-        self.assertEqual(str(self.episode), "My Python Podcast: My Awesome Podcast Episode")
+        self.assertEqual(str(self.episode), "My Python Podcast: My nice podcast Episode")
