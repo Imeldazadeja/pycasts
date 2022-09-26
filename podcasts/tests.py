@@ -1,11 +1,11 @@
 from django.test import TestCase
 from django.utils import timezone
-from .models import Episod
+from .models import Episode
 
 # Create your tests here.
 class PodCastsTests(TestCase):
     def setUp(self) -> None:
-        self.episode = Episod.objects.create(
+        self.episode = Episode.objects.create(
             title = 'My nice podcast Episode',
             description = 'Django new features in version',
             pub_date = timezone.now(),

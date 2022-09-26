@@ -2,7 +2,7 @@ from django.db import models
 
 # Create your models here.
 
-class Episod(models.Model):
+class Episode(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
     pub_date = models.DateTimeField()
