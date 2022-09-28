@@ -39,7 +39,23 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # My Apps
     "podcasts.apps.PodcastsConfig",
+    # Third Party Apps
+    "django_apscheduler",
 ]
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+        },
+    },
+    "root": {
+        "handlers": ["console"],
+        "level": "INFO",
+    },
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
