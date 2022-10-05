@@ -44,6 +44,10 @@ def fetch_talkpython_episodes():
     _feed = feedparser.parse("https://talkpython.fm/episodes/rss")
     save_new_episodes(_feed)
 
+def fetch_bibleinayear_podcast():
+    _feed = feedparser.parse("https://feeds.fireside.fm/bibleinayear/rss")
+    save_new_episodes(_feed)
+
 def delete_old_job_executions(max_age=604_800):
     """Deletes all apscheduler job execution logs older than `max_age`."""
     DjangoJobExecution.objects.delete_old_job_executions(max_age)
@@ -74,6 +78,16 @@ class Command(BaseCommand):
             replace_existing=True,
         )
         logger.info("Added job: Talk Python Feed.")
+
+        scheduler.add_job(
+            fetch_bibleinayear_podcast,
+            trigger="interval",
+            minutes=2,
+            id="The Bible in a Year (with Fr. Mike Schmitz)",
+            max_instances=1,
+            replace_existing=True
+        )
+        logger.info("Added job: The Bible in a Year (with Fr. Mike Schmitz).")
 
         scheduler.add_job(
             delete_old_job_executions,
